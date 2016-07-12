@@ -1,0 +1,17 @@
+uri: 'https://github.com/ros-industrial/ros_canopen/archive/indigo-devel.tar.gz'
+exec-path: ros_canopen-indigo-devel
+install-script: |
+  #!/bin/bash
+  set -e
+  mkdir src
+  mv * src || true
+  rosdep install --from-path src --ignore-src --rosdistro=indigo -y
+  catkin_make . --pkg can_msgs
+  catkin_make install
+  echo "FINISHED"
+  #echo
+  sudo su ; source /opt/ros/indigo/setup.bash
+  catkin_make -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo/ install
+presence-script: |
+   #!/bin/sh
+   test -f /opt/ros/indigo/share/can_msgs/package.xml
