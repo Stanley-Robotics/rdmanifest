@@ -1,0 +1,14 @@
+uri: 'https://github.com/Stanley-Robotics/executive_smach/archive/indigo-devel.tar.gz'
+exec-path: executive_smach-indigo-devel
+check-presence-script: |
+   #!/bin/bash
+   test -f /opt/ros/indigo/share/smach/package.xml
+install-script: |
+  #!/bin/bash
+  mkdir src
+  mv * src || true
+  source /opt/ros/indigo/setup.bash
+  rosdep install --from-path src --ignore-src --rosdistro=indigo -y
+  #catkin_make
+  sudo -u root bash -c "source /opt/ros/indigo/setup.bash; catkin_make -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo/ install"
+  true
