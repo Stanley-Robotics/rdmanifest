@@ -1,0 +1,14 @@
+uri: 'https://github.com/ros-drivers/velodyne/archive/velodyne-1.2.0.tar.gz'
+exec-path: velodyne-velodyne-1.2.0
+check-presence-script: |
+   #!/bin/bash
+   test -f /opt/ros/indigo/share/velodyne/package.xml
+install-script: |
+  #!/bin/bash
+  mkdir src
+  mv * src || true
+  source /opt/ros/indigo/setup.bash
+  rosdep install --from-path src --ignore-src --rosdistro=indigo -y
+  #catkin_make
+  sudo -u root bash -c "source /opt/ros/indigo/setup.bash; catkin_make -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo/ install"
+  true
