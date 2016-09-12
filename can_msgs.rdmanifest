@@ -1,4 +1,4 @@
-uri: 'https://github.com/ros-industrial/ros_canopen/archive/indigo-devel.tar.gz'
+uri: 'https://github.com/Stanley-Robotics/ros_canopen/archive/indigo-devel.tar.gz'
 exec-path: ros_canopen-indigo-devel
 check-presence-script: |
    #!/bin/bash
