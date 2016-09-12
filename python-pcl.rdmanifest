@@ -6,6 +6,6 @@ check-presence-script: |
 install-script: |
   #!/bin/bash
   sudo apt-get install cython -y
-  sudo apt-get install ros-indigo-pcl-ros -y
+  sudo apt-get install libpcl-1.7-all-dev -y
   sudo python setup.py install
   true
